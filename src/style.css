@@ -1,6 +1,8 @@
 :root{
   --white: #C3C9E9;
   --black: #131B23;
+  --light-green: #90EE90;
+  --light-red: #FF7F7F;
 }
 
 html,body{
@@ -61,7 +63,6 @@ body{
 }
 
 .add-projects{
-  margin: 10px 0;
   padding: 10px 5px;
   font-weight: bold;
   cursor: pointer;
@@ -111,20 +112,65 @@ body{
 }
 
 .add-tasks{
-  margin: 10px 0;
   padding: 15px 15px;
   font-weight: bold;
   cursor: pointer;
   border-radius: 5px;
   border: none;
-  font-size: 19px;
 }
 
 .add-tasks:hover{
   background-color: var(--white);
 }
 
+.input-field{
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
 
+.yes-no{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap:20px;
+}
+
+.yes, .no{
+  flex-grow: 1;
+  border: none;
+  padding: 15px 10px;
+  margin: 0;
+  text-decoration: none;
+  color: var(--black);
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.yes{
+  background-color: var(--light-green);
+}
+
+.no{
+  background-color: var(--light-red);
+}
+
+
+.input{
+  padding: 10px 5px;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+}
+
+input:focus{
+  outline: none;
+}
+
+button{
+  -webkit-appearance: none;
+}
 
 /* FOOTER */
 
