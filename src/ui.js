@@ -26,6 +26,15 @@ export default class UI{
     addProjects.addEventListener("click",(e)=>{
       projects.appendChild(inputField);
     });
+
+    const input = inputField.querySelector(".input")
+    const yesBtn = inputField.querySelector(".yes");
+    const newProjects = document.getElementById("new-projects");
+    yesBtn.addEventListener("click",(e) =>{
+      newProjects.appendChild(UI.createProject(input.value));
+      input.value="";
+      inputField.parentElement.removeChild(inputField);
+    });
   }
 
   static setTaskBtn(){
