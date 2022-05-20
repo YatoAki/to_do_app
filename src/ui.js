@@ -6,12 +6,17 @@ export default class UI{
 
   static loadHomePage(){
     UI.loadProjects();
+    UI.loadInitalDisplay();
   }
 
   static loadProjects(){
     UI.loadDefaultProjects();
     UI.loadNewProjects();
     UI.setProjectBtn();
+  }
+
+  static loadInitalDisplay(){
+    document.querySelector(".defaults").querySelector("p").click();
   }
 
   static loadNewProjects(){
