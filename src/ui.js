@@ -27,8 +27,7 @@ export default class UI{
   static loadDefaultProjects(){
     const defaults = ["Urgent","Family","Work"];
     defaults.forEach((project) =>{
-
-      if (localStorage.length <= 0) Storage.createNewProjectData(project);
+      if (localStorage.length < 3) Storage.createNewProjectData(project);
       UI.addDefaultProject(project)
     });
   }
@@ -63,7 +62,7 @@ export default class UI{
     const yesBtn = inputField.querySelector(".yes");
     yesBtn.addEventListener("click",(e) =>{
       if (input.value == "") return;
-      Storage.createNewProjectData(title);
+      Storage.createNewProjectData(input.value);
       UI.addNewProject(input.value);
       input.value="";
       inputField.parentElement.removeChild(inputField);

@@ -10,7 +10,6 @@ export default class Storage{
   static createNewProjectData(key){
     let newProject = new Project(key);
     Storage.saveData(key,newProject);
-    console.log(Storage.getData(key).getTitle());
   }
 
   static getData(key){
