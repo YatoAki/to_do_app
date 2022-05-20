@@ -4,20 +4,31 @@ import Project from "./project.js"
 export default class UI{
 
   static loadHomePage(){
-    UI.setBtns();
+    UI.loadProjects();
   }
 
-
-  static createProject(title){
-    const para = document.createElement("p")
-    para.textContent = title;
-    return para;
-  }
-
-  static setBtns(){
-    UI.setTaskBtn();
+  static loadProjects(){
+    UI.addDefaultProject("Family");
+    UI.addDefaultProject("Urgent");
+    UI.addDefaultProject("Work");
     UI.setProjectBtn();
   }
+
+
+  static addNewProject(title){
+    const newProjects = document.getElementById("new-projects");
+    const para = document.createElement("p")
+    para.textContent = title;
+    newProjects.appendChild(para);
+  }
+
+  static addDefaultProject(title){
+    const newProjects = document.querySelector(".defaults");
+    const para = document.createElement("p")
+    para.textContent = title;
+    newProjects.appendChild(para);
+  }
+
 
   static setProjectBtn(){
     const projects = document.querySelector(".nav");
@@ -29,10 +40,9 @@ export default class UI{
 
     const input = inputField.querySelector(".input")
     const yesBtn = inputField.querySelector(".yes");
-    const newProjects = document.getElementById("new-projects");
     yesBtn.addEventListener("click",(e) =>{
       if (input.value == "") return;
-      newProjects.appendChild(UI.createProject(input.value));
+      UI.addNewProject(input.value);
       input.value="";
       inputField.parentElement.removeChild(inputField);
     });
