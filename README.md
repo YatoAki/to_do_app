@@ -10,7 +10,9 @@ To Do reminder app
 * Add Tasks for Urgent, Family or Work
 * Make your own project session
 * Add Tasks to your project
-* Data are saved on the local machine with Web Storage API
+* Mark tasks done to remove them
+* Data are saved on the local machine by the use of Web Storage API
+* Reset all the data
 
 ## How to access the website
 
