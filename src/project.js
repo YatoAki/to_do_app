@@ -30,16 +30,17 @@ export default class Project{
   }
 
   getTask(taskTitle){
-    return this.tasks.find((task) => task.getTitle == taskTitle)
+    return this.tasks.find((task) => task.title == taskTitle)
   }
 
   addTask(newTask){
-    if (this.tasks.find((task) => task.getTitle == newTask.title)) return;
+    if (this.tasks.find((task) => task.title == newTask.title)) return;
     this.tasks.push(newTask);
   }
 
   deleteTask(taskTitle){
-    this.tasks = this.tasks.filter((task) => task.getTitle != taskTitle);
+    console.log(this.tasks[0].getTitle);
+    this.tasks = this.tasks.filter((task) => task.title != taskTitle);
   }
 
 

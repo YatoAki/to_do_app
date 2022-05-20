@@ -164,12 +164,25 @@ export default class UI{
     input.type = "radio";
     input.classList.add("done");
     div.appendChild(input);
+    UI.makeDoneBtn(input);
     div.appendChild(UI.createPara(title,"title"));
     const grow = document.createElement("div");
     grow.classList.add("grow");
     div.appendChild(grow);
     div.appendChild(UI.createPara("None","time"));
     tasksList.appendChild(div);
+  }
+
+  static makeDoneBtn(input){
+    input.addEventListener("click",(e) =>{
+      const project = Storage.getData(UI.getActiveProject());
+      const task = input.parentElement.querySelector(".title").textContent;
+      project.deleteTask(task);
+      console.log(project);
+      Storage.saveData(project.title,project);
+      const parent = input.parentElement;
+      parent.parentElement.removeChild(parent);
+    });
   }
 
   static createPara(text,cl){
