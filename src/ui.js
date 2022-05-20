@@ -31,6 +31,7 @@ export default class UI{
     const yesBtn = inputField.querySelector(".yes");
     const newProjects = document.getElementById("new-projects");
     yesBtn.addEventListener("click",(e) =>{
+      if (input.value == "") return;
       newProjects.appendChild(UI.createProject(input.value));
       input.value="";
       inputField.parentElement.removeChild(inputField);
