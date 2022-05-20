@@ -25,8 +25,9 @@ export default class UI{
   static addNewProject(title){
     Storage.createNewProjectData(title);
     const newProjects = document.getElementById("new-projects");
-    const para = document.createElement("p")
+    const para = document.createElement("p");
     para.textContent = title;
+    UI.makeShowTasksBtn(para);
     newProjects.appendChild(para);
   }
 
@@ -34,6 +35,7 @@ export default class UI{
     const newProjects = document.querySelector(".defaults");
     const para = document.createElement("p")
     para.textContent = title;
+    UI.makeShowTasksBtn(para);
     newProjects.appendChild(para);
   }
 
@@ -86,6 +88,24 @@ export default class UI{
     inputField.appendChild(text);
     inputField.appendChild(div);
     return inputField;
+  }
+
+  static makeShowTasksBtn(para){
+    para.addEventListener("click", (e)=>{
+      UI.makeTaskInterface(para.textContent,[]);
+    })
+  }
+
+  static makeTaskInterface(title,tasks){
+    const tasksField = document.querySelector(".tasks");
+    tasksField.textContent = "";
+    const h2 = document.createElement("h2");
+    const addTasks = document.createElement("div");
+    addTasks.classList.add("add-tasks");
+    addTasks.textContent = "+ Add Task";
+    h2.textContent = title;
+    tasksField.appendChild(h2);
+    tasksField.appendChild(addTasks);
   }
 
 }

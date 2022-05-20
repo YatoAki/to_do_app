@@ -79,6 +79,10 @@ body{
   background-color: var(--white);
 }
 
+.active{
+  background-color: var(--white);
+}
+
 
 .tasks{
   display: flex;
