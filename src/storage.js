@@ -6,6 +6,11 @@ export default class Storage{
     localStorage.setItem(key, JSON.stringify(data));
   }
 
+  static createNewProjectData(key){
+    let newProject = new Project(key);
+    Storage.saveData(key,newProject);
+  }
+
   static getData(key){
     const data = JSON.parse(localStorage.getItem(key))
     const dataObject = new Project(data["title"]);
