@@ -1,5 +1,6 @@
 import Task from "./task.js"
 import Project from "./project.js"
+import Storage from "./storage.js"
 
 export default class UI{
 
@@ -8,10 +9,17 @@ export default class UI{
   }
 
   static loadProjects(){
-    UI.addDefaultProject("Family");
-    UI.addDefaultProject("Urgent");
-    UI.addDefaultProject("Work");
+    UI.loadDefaultProjects();
     UI.setProjectBtn();
+  }
+
+  static loadDefaultProjects(){
+    const defaults = ["Urgent","Family","Work"];
+    defaults.forEach((project) =>{
+      let newProject = new Project(project);
+      Storage.saveData(project,newProject);
+      UI.addDefaultProject(project)
+    });
   }
 
 
