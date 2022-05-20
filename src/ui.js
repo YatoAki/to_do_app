@@ -19,6 +19,7 @@ export default class UI{
       let newProject = new Project(project);
       Storage.saveData(project,newProject);
       UI.addDefaultProject(project)
+      console.log(Storage.getData(project).getTasks());
     });
   }
 
