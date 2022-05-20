@@ -70,15 +70,6 @@ export default class UI{
     });
   }
 
-  static setTaskBtn(){
-    const tasks = document.querySelector(".tasks");
-    const addTasks = document.querySelector(".add-tasks");
-    const inputField = UI.createInputField();
-    addTasks.addEventListener("click",(e)=>{
-      tasks.appendChild(inputField);
-    });
-  }
-
   static createInputField(){
     const inputField = document.createElement("div")
     inputField.classList.add("input-field");
@@ -104,20 +95,29 @@ export default class UI{
 
   static makeShowTasksBtn(para){
     para.addEventListener("click", (e)=>{
-      UI.makeTaskInterface(para.textContent,[]);
+      UI.makeTaskInterface(para.textContent);
     })
   }
 
-  static makeTaskInterface(title,tasks){
+  static makeTaskInterface(title){
     const tasksField = document.querySelector(".tasks");
     tasksField.textContent = "";
     const h2 = document.createElement("h2");
     const addTasks = document.createElement("div");
     addTasks.classList.add("add-tasks");
     addTasks.textContent = "+ Add Task";
+    UI.setTaskBtn(title,addTasks);
     h2.textContent = title;
     tasksField.appendChild(h2);
     tasksField.appendChild(addTasks);
+  }
+
+  static setTaskBtn(title,addTasks){
+    const tasks = document.querySelector(".tasks");
+    const inputField = UI.createInputField();
+    addTasks.addEventListener("click",(e)=>{
+      tasks.appendChild(inputField);
+    });
   }
 
 }
