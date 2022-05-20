@@ -111,13 +111,18 @@ export default class UI{
     const h2 = document.createElement("h2");
     const tasksList = document.createElement("div");
     tasksList.classList.add("tasks-list");
+    tasksField.appendChild(h2);
+    tasksField.appendChild(tasksList);
+
+    const projectName = UI.getActiveProject();
+    const allTasks = Storage.getData(projectName).getTasks();
+    allTasks.forEach((task) => UI.addNewTask(task["title"]));
+
     const addTasks = document.createElement("div");
     addTasks.classList.add("add-tasks");
     addTasks.textContent = "+ Add Task";
     UI.setTaskBtn(title,addTasks);
     h2.textContent = title;
-    tasksField.appendChild(h2);
-    tasksField.appendChild(tasksList);
     tasksField.appendChild(addTasks);
   }
 
@@ -132,7 +137,7 @@ export default class UI{
     const yesBtn = inputField.querySelector(".yes");
     yesBtn.addEventListener("click",(e) =>{
       if (input.value == "") return;
-      const projectName = document.querySelector(".active").textContent;
+      const projectName = UI.getActiveProject();
       const project = Storage.getData(projectName);
       const task = new Task(input.value);
       project.addTask(task);
@@ -141,6 +146,10 @@ export default class UI{
       input.value="";
       inputField.parentElement.removeChild(inputField);
     });
+  }
+
+  static getActiveProject(){
+    return document.querySelector(".active").textContent;
   }
 
   static addNewTask(title){

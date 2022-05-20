@@ -1,4 +1,5 @@
 import Project from "./project.js"
+import Task from "./task.js"
 
 export default class Storage{
 
@@ -16,6 +17,7 @@ export default class Storage{
     const data = JSON.parse(localStorage.getItem(key))
     const dataObject = new Project(data["title"]);
     dataObject.setDescription(data["description"]);
+    data["tasks"].map((task) => Object.assign(new Task(), task));
     dataObject.setTasks(data["tasks"]);
     return dataObject;
   }
