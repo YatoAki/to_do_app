@@ -16,7 +16,8 @@ export default class UI{
   static loadDefaultProjects(){
     const defaults = ["Urgent","Family","Work"];
     defaults.forEach((project) =>{
-      Storage.createNewProjectData(project);
+
+      if (localStorage.length <= 0) Storage.createNewProjectData(project);
       UI.addDefaultProject(project)
     });
   }
