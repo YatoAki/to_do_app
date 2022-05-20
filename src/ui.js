@@ -18,12 +18,12 @@ export default class UI{
     defaults.forEach((project) =>{
       Storage.createNewProjectData(project);
       UI.addDefaultProject(project)
-      console.log(Storage.getData(project).getTitle());
     });
   }
 
 
   static addNewProject(title){
+    Storage.createNewProjectData(title);
     const newProjects = document.getElementById("new-projects");
     const para = document.createElement("p")
     para.textContent = title;
