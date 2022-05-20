@@ -20,4 +20,12 @@ export default class Storage{
     return dataObject;
   }
 
+  static getAllData(){
+    const data = {};
+    for (let i = 0 ; i < localStorage.length ; i++){
+      data[localStorage.key(i)] = Storage.getData(localStorage.key(i));
+    }
+    return data;
+  }
+
 }

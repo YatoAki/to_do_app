@@ -10,7 +10,18 @@ export default class UI{
 
   static loadProjects(){
     UI.loadDefaultProjects();
+    UI.loadNewProjects();
     UI.setProjectBtn();
+  }
+
+  static loadNewProjects(){
+    const newProjects = Storage.getAllData();
+    const keys = Object.keys(newProjects)
+    keys.forEach((key) => {
+      if (key!== "Urgent" && key!== "Family" && key !== "Work"){
+        UI.addNewProject(newProjects[key].getTitle());
+      }
+    })
   }
 
   static loadDefaultProjects(){
@@ -24,7 +35,6 @@ export default class UI{
 
 
   static addNewProject(title){
-    Storage.createNewProjectData(title);
     const newProjects = document.getElementById("new-projects");
     const para = document.createElement("p");
     para.textContent = title;
@@ -53,6 +63,7 @@ export default class UI{
     const yesBtn = inputField.querySelector(".yes");
     yesBtn.addEventListener("click",(e) =>{
       if (input.value == "") return;
+      Storage.createNewProjectData(title);
       UI.addNewProject(input.value);
       input.value="";
       inputField.parentElement.removeChild(inputField);
