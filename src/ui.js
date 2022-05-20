@@ -95,6 +95,12 @@ export default class UI{
 
   static makeShowTasksBtn(para){
     para.addEventListener("click", (e)=>{
+      const nav = document.querySelector(".nav");
+      const projects = nav.querySelectorAll("p");
+      projects.forEach((project) => {
+        project.classList.remove("active");
+      })
+      para.classList.add("active");
       UI.makeTaskInterface(para.textContent);
     })
   }
