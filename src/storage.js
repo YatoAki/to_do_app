@@ -15,8 +15,8 @@ export default class Storage{
   static getData(key){
     const data = JSON.parse(localStorage.getItem(key))
     const dataObject = new Project(data["title"]);
-    dataObject.setDescription = data["description"];
-    dataObject.setTasks = data["tasks"];
+    dataObject.setDescription(data["description"]);
+    dataObject.setTasks(data["tasks"]);
     return dataObject;
   }
 

@@ -132,6 +132,11 @@ export default class UI{
     const yesBtn = inputField.querySelector(".yes");
     yesBtn.addEventListener("click",(e) =>{
       if (input.value == "") return;
+      const projectName = document.querySelector(".active").textContent;
+      const project = Storage.getData(projectName);
+      const task = new Task(input.value);
+      project.addTask(task);
+      Storage.saveData(projectName,project);
       UI.addNewTask(input.value);
       input.value="";
       inputField.parentElement.removeChild(inputField);
