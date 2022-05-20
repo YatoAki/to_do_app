@@ -65,7 +65,7 @@ export default class UI{
 
 
   static setProjectBtn(){
-    const projects = document.querySelector(".nav");
+    const projects = document.querySelector(".pro-in");
     const addProjects = document.querySelector(".add-projects");
     const inputField = UI.createInputField();
     addProjects.addEventListener("click",(e)=>{
