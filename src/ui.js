@@ -7,12 +7,21 @@ export default class UI{
   static loadHomePage(){
     UI.loadProjects();
     UI.loadInitalDisplay();
+    UI.resetBtn();
   }
 
   static loadProjects(){
     UI.loadDefaultProjects();
     UI.loadNewProjects();
     UI.setProjectBtn();
+  }
+
+  static resetBtn(){
+    const reset = document.querySelector(".reset");
+    reset.addEventListener("click", (e) =>{
+      localStorage.clear();
+      window.location.reload();
+    })
   }
 
   static loadInitalDisplay(){

@@ -67,7 +67,7 @@ body{
   background-color: var(--white);
 }
 
-.add-projects{
+.add-projects, .reset{
   padding: 10px 5px;
   font-weight: bold;
   cursor: pointer;
@@ -77,6 +77,10 @@ body{
 
 .add-projects:hover{
   background-color: var(--white);
+}
+
+.reset:hover{
+  background-color: var(--light-red);
 }
 
 .active{
