@@ -103,12 +103,15 @@ export default class UI{
     const tasksField = document.querySelector(".tasks");
     tasksField.textContent = "";
     const h2 = document.createElement("h2");
+    const tasksList = document.createElement("div");
+    tasksList.classList.add("tasks-list");
     const addTasks = document.createElement("div");
     addTasks.classList.add("add-tasks");
     addTasks.textContent = "+ Add Task";
     UI.setTaskBtn(title,addTasks);
     h2.textContent = title;
     tasksField.appendChild(h2);
+    tasksField.appendChild(tasksList);
     tasksField.appendChild(addTasks);
   }
 
@@ -118,6 +121,38 @@ export default class UI{
     addTasks.addEventListener("click",(e)=>{
       tasks.appendChild(inputField);
     });
+
+    const input = inputField.querySelector(".input")
+    const yesBtn = inputField.querySelector(".yes");
+    yesBtn.addEventListener("click",(e) =>{
+      if (input.value == "") return;
+      UI.addNewTask(input.value);
+      input.value="";
+      inputField.parentElement.removeChild(inputField);
+    });
+  }
+
+  static addNewTask(title){
+    const tasksList = document.querySelector(".tasks-list");
+    const div = document.createElement("div");
+    div.classList.add("each-task");
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.classList.add("done");
+    div.appendChild(input);
+    div.appendChild(UI.createPara(title,"title"));
+    const grow = document.createElement("div");
+    grow.classList.add("grow");
+    div.appendChild(grow);
+    div.appendChild(UI.createPara("None","time"));
+    tasksList.appendChild(div);
+  }
+
+  static createPara(text,cl){
+    const para = document.createElement("p")
+    para.textContent = text;
+    para.classList.add(cl);
+    return para;
   }
 
 }
