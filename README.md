@@ -18,7 +18,7 @@ To Do reminder app
 
 ### Through the GitHub page
 
-Check the live version <a href="https://yatoaki.github.io/to_do_app/">
+Check the live version <a href="https://yatoaki.github.io/to_do_app/">Here</a>
 ### On your local machine
 
 1. First, clone this repo to your local mechine with __git__ command.
